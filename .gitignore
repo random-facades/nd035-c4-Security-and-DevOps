@@ -18,3 +18,17 @@ starter_code/target/classes/com/example/demo/model/persistence/repositories/User
 starter_code/target/classes/com/example/demo/model/requests/CreateUserRequest.class
 starter_code/target/classes/com/example/demo/model/requests/ModifyCartRequest.class
 starter_code/target/test-classes/com/example/demo/SareetaApplicationTests.class
+starter_code/target/classes/application.properties
+starter_code/target/classes/application.properties
+.gitignore
+spring-boot-app.log
+starter_code/pom.xml
+starter_code/src/main/java/com/example/demo/controllers/UserController.java
+starter_code/src/main/resources/application.properties
+starter_code/src/main/resources/log4j2-spring.xml
+starter_code/src/test/java/com/example/demo/SareetaApplicationTests.java
+starter_code/src/test/java/com/example/demo/TestUtils.java
+starter_code/src/test/java/com/example/demo/controllers/CartControllerTest.java
+starter_code/src/test/java/com/example/demo/controllers/ItemControllerTest.java
+starter_code/src/test/java/com/example/demo/controllers/OrderControllerTest.java
+starter_code/src/test/java/com/example/demo/controllers/UserControllerTest.java
