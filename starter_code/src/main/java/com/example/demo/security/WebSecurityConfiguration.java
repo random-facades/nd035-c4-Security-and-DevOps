@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,17 +11,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.example.demo.service.AuthenticationService;
+
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
+    @Autowired
 	private UserDetailsServiceImpl userDetailsService;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-    public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService,
-			BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.userDetailsService = userDetailsService;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-	}
+    @Autowired
+    private AuthenticationService authenticationService;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -41,7 +42,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.parentAuthenticationManager(authenticationManagerBean())
+        auth.authenticationProvider(authenticationService)
             .userDetailsService(userDetailsService)
             .passwordEncoder(bCryptPasswordEncoder);
     }
