@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,15 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-	
-	private UserDetailsServiceImpl userDetailsService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-    public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService,
-			BCryptPasswordEncoder bCryptPasswordEncoder) {
-		this.userDetailsService = userDetailsService;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-	}
+	@Autowired
+	UserDetailsServiceImpl userDetailsService;
+	@Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
